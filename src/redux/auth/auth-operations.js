@@ -7,19 +7,22 @@ import {
   loginRequest,
   loginSuccess,
   loginError,
-  // logoutRequest,
-  // logoutSuccess,
-  // logoutError,
-  // fetchRequest,
-  // fetchSuccess,
-  // fetchError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
+  fetchRequest,
+  fetchSuccess,
+  fetchError,
 } from './auth-actions';
+import { store } from '../store';
+import { token } from '../../services/axios-api';
 
 export const register = credentials => async dispatch => {
   dispatch(registerRequest());
 
   try {
     const data = await axiosAPI.registerUser(credentials);
+    axiosAPI.token.set(data.token);
 
     dispatch(registerSuccess(data));
   } catch (error) {
@@ -32,6 +35,7 @@ export const login = credentials => async dispatch => {
 
   try {
     const data = await axiosAPI.loginUser(credentials);
+    axiosAPI.token.set(data.token);
 
     dispatch(loginSuccess(data));
   } catch (error) {
@@ -39,25 +43,32 @@ export const login = credentials => async dispatch => {
   }
 };
 
-// export const addItem = contact => async dispatch => {
-//   dispatch(addContactRequest());
+export const logout = () => async dispatch => {
+  dispatch(logoutRequest());
 
-//   try {
-//     const id = uuidv4();
-//     await axiosAPI.addContact(id, contact);
-//     dispatch(addContactSuccess({ id, ...contact }));
-//   } catch (error) {
-//     dispatch(addContactError(error));
-//   }
-// };
+  try {
+    await axiosAPI.logoutUser();
+    axiosAPI.token.unset();
 
-// export const deleteItem = id => async dispatch => {
-//   dispatch(deleteContactRequest());
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error));
+  }
+};
 
-//   try {
-//     await axiosAPI.deleteContact(id);
-//     dispatch(deleteContactSuccess(id));
-//   } catch (error) {
-//     dispatch(deleteContactError(error));
-//   }
-// };
+export const fetch = () => async dispatch => {
+  dispatch(fetchRequest());
+
+  const persistedToken = store.getState().auth.token;
+
+  if (persistedToken === '') return dispatch(fetchError());
+
+  token.set(persistedToken);
+  try {
+    const data = await axiosAPI.fetchUser();
+
+    dispatch(fetchSuccess(data));
+  } catch (error) {
+    dispatch(fetchError(error));
+  }
+};

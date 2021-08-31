@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import * as axiosAPI from '../../services/axios-api';
 import {
   fetchContactsRequest,
@@ -27,9 +27,10 @@ export const addItem = contact => async dispatch => {
   dispatch(addContactRequest());
 
   try {
-    const id = uuidv4();
-    await axiosAPI.addContact(id, contact);
-    dispatch(addContactSuccess({ id, ...contact }));
+    // const id = uuidv4();
+    // await axiosAPI.addContact(id, contact);
+    const contactWithID = await axiosAPI.addContact(contact);
+    dispatch(addContactSuccess(contactWithID));
   } catch (error) {
     dispatch(addContactError(error));
   }

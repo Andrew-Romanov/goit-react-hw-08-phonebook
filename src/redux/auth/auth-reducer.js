@@ -29,37 +29,24 @@ const userReducer = createReducer(
   {
     [registerSuccess]: (_, action) => action.payload.user,
     [loginSuccess]: (_, action) => action.payload.user,
-    // [fetchContactsSuccess]: () => false,
-    // [fetchContactsError]: () => false,
-    // [addContactRequest]: () => true,
-    // [addContactSuccess]: () => false,
-    // [addContactError]: () => false,
-    // [deleteContactRequest]: () => true,
-    // [deleteContactSuccess]: () => false,
-    // [deleteContactError]: () => false,
+    [logoutSuccess]: () => {
+      return { name: '', email: '' };
+    },
+    [fetchSuccess]: (_, action) => action.payload,
   },
 );
 
 const tokenReducer = createReducer('', {
   [registerSuccess]: (_, action) => action.payload.token,
   [loginSuccess]: (_, action) => action.payload.token,
-  // [fetchContactsError]: (_, action) => action.payload,
-  // [fetchContactsRequest]: () => null,
-  // [addContactError]: (_, action) => action.payload,
-  // [addContactRequest]: () => null,
-  // [deleteContactError]: (_, action) => action.payload,
-  // [deleteContactRequest]: () => null,
+  [logoutSuccess]: () => '',
 });
 
 const isLoggedInReducer = createReducer(false, {
   [registerSuccess]: () => true,
   [loginSuccess]: () => true,
-  // [fetchContactsError]: (_, action) => action.payload,
-  // [fetchContactsRequest]: () => null,
-  // [addContactError]: (_, action) => action.payload,
-  // [addContactRequest]: () => null,
-  // [deleteContactError]: (_, action) => action.payload,
-  // [deleteContactRequest]: () => null,
+  [logoutSuccess]: () => false,
+  [fetchSuccess]: () => true,
 });
 
 const loadingReducer = createReducer(false, {

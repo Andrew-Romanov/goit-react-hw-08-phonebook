@@ -36,7 +36,7 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    margin: 8px 175px;
+    margin: 8px 165px;
   }
 
   &__Button {
@@ -45,6 +45,7 @@
     margin-right: auto;
     margin-top: 15px;
     border-radius: 5px;
+    padding: 0px 30px;
     border: 0px;
     outline: 0px;
     font: inherit;

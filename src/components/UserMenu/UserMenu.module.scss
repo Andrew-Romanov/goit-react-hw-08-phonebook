@@ -1,5 +1,7 @@
-.RegisterPageView {
-  // display: flex;
+.UserMenu {
+  display: flex;
+  align-items: center;
+  // margin: 0px auto;
   // flex-wrap: wrap;
   // margin-top: -20px;
   // margin-left: -20px;
@@ -18,32 +20,32 @@
   &__Title {
     font-size: 24px;
     font-weight: 500;
-    margin-bottom: 15px;
-    color: white;
+    margin: 0px 15px;
+    // color: white;
   }
 
   &__Image {
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+    // margin-bottom: 15px;
     background-color: white;
     object-fit: cover;
   }
 
-  &__Form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin: 8px 165px;
-  }
+  // &__Form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: flex-end;
+  //   justify-content: space-between;
+  //   margin: 8px 165px;
+  // }
 
   &__Button {
     height: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+    // margin-left: auto;
+    // margin-right: auto;
+    // margin-top: 15px;
     border-radius: 5px;
     padding: 0px 30px;
     border: 0px;
