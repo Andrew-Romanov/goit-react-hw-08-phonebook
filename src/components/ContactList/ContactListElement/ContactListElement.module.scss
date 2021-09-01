@@ -1,7 +1,14 @@
 .ContactListElement {
+  &__Text {
+    font-size: 21px;
+    font-weight: 500;
+  }
+
   &__Button {
-    height: 22px;
+    height: 30px;
     border-radius: 5px;
+    margin-left: 15px;
+    padding: 0px 10px;
     border: 0px;
     outline: 0px;
     font: inherit;

@@ -44,7 +44,7 @@ const ContactForm = () => {
           onChange={handleChange}
         />
       </label>
-      <br />
+      {/* <br /> */}
       <label>
         {`Number: `}
         <input
@@ -57,7 +57,7 @@ const ContactForm = () => {
           onChange={handleChange}
         />
       </label>
-      <br />
+      {/* <br /> */}
       <button className={styles.ContactForm__Button} type="submit">
         Add Contact
       </button>

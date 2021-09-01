@@ -20,34 +20,30 @@ const AppBar = () => {
         Home
       </NavLink>
 
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      {isLoggedIn ? (
+        <>
+          <UserMenu />
+          <NavLink
+            to="/contacs"
+            exact
+            className={styles.AppBar__Link}
+            activeClassName={styles.AppBar__Link_Active}
+          >
+            Contacts
+          </NavLink>
+        </>
+      ) : (
+        <AuthNav />
+      )}
 
       {/* <NavLink
-        to="/register"
-        exact
-        className={styles.AppBar__Link}
-        activeClassName={styles.AppBar__Link_Active}
-      >
-        Register
-      </NavLink>
-
-      <NavLink
-        to="/login"
-        exact
-        className={styles.AppBar__Link}
-        activeClassName={styles.AppBar__Link_Active}
-      >
-        Login
-      </NavLink> */}
-
-      <NavLink
         to="/contacs"
         exact
         className={styles.AppBar__Link}
         activeClassName={styles.AppBar__Link_Active}
       >
         Contacts
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 };

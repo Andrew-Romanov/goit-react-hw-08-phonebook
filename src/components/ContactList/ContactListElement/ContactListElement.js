@@ -4,7 +4,9 @@ import styles from './ContactListElement.module.scss';
 const ContactListElement = ({ name, number, whenDelete }) => {
   return (
     <>
-      {name}: {number}
+      <p className={styles.ContactListElement__Text}>
+        {name}: {number}
+      </p>
       <button
         className={styles.ContactListElement__Button}
         type="button"

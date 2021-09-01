@@ -1,5 +1,6 @@
-// import { lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { useEffect, lazy, Suspense } from 'react';
+import { Switch, Redirect } from 'react-router-dom';
+// import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { fetch } from './redux/auth/auth-operations';
@@ -8,14 +9,16 @@ import MainContainer from './components/MainContainer';
 import PageHeader from './components/PageHeader';
 import Section from './components/Section';
 import AppBar from './components/AppBar';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
+// import ContactForm from './components/ContactForm';
+// import Filter from './components/Filter';
+// import ContactList from './components/ContactList';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import PublicRoute from './components/Routes/PublicRoute';
 
-import HomePageView from './views/HomePageView';
-import RegisterPageView from './views/RegisterPageView';
-import LoginPageView from './views/LoginPageView';
-import { useEffect } from 'react';
+const HomePageView = lazy(() => import('./views/HomePageView'));
+const RegisterPageView = lazy(() => import('./views/RegisterPageView'));
+const LoginPageView = lazy(() => import('./views/LoginPageView'));
+const ContactsPageView = lazy(() => import('./views/ContactsPageView'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,29 +36,43 @@ const App = () => {
       </Section>
 
       <Section title={null}>
-        {/* <Suspense fallback="Loading..."> */}
-        <Switch>
-          <Route path="/" exact>
-            <HomePageView />
-          </Route>
+        <Suspense fallback="Loading...">
+          <Switch>
+            <PublicRoute path="/" exact>
+              <HomePageView />
+            </PublicRoute>
 
-          <Route path="/register">
-            <RegisterPageView />
-          </Route>
+            <PublicRoute path="/register" restricted>
+              <RegisterPageView />
+            </PublicRoute>
 
-          <Route path="/login">
-            <LoginPageView />
-          </Route>
+            <PublicRoute path="/login" restricted>
+              <LoginPageView />
+            </PublicRoute>
 
-          <Route path="/contacs">
-            <ContactForm />
-            <Filter />
-            <ContactList />
-          </Route>
+            {/* <Route path="/" exact>
+              <HomePageView />
+            </Route>
 
-          <Redirect to="/" />
-        </Switch>
-        {/* </Suspense> */}
+            <Route path="/register">
+              <RegisterPageView />
+            </Route>
+
+            <Route path="/login">
+              <LoginPageView />
+            </Route> */}
+
+            <PrivateRoute path="/contacs">
+              <ContactsPageView />
+            </PrivateRoute>
+
+            {/* <Route path="/contacs">
+              <ContactsPageView />
+            </Route> */}
+
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
       </Section>
 
       {/* <Switch>
