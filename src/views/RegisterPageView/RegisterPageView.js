@@ -21,11 +21,6 @@ const RegisterPageView = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    // if (
-    //   store.getState().contacts.items.some(item => item.name === contact.name)
-    // )
-    //   return alert(`${contact.name} is already in contacts`);
-
     dispatch(register(formData));
 
     formReset();

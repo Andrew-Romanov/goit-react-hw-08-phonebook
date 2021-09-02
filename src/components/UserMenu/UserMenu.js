@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserName } from '../../redux/auth/auth-selectors';
 
@@ -7,25 +6,11 @@ import styles from './UserMenu.module.scss';
 import UserMenuImage from './user-menu-image.svg';
 
 const UserMenu = () => {
-  // const [formData, setFormData] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const userName = useSelector(getUserName);
 
-  // const handleChange = event => {
-  //   const { name, value } = event.currentTarget;
-  //   setFormData(prevFormData => ({ ...prevFormData, [name]: value }));
-  // };
-
   const handleClick = () => {
-    // event.preventDefault();
-
-    // if (
-    //   store.getState().contacts.items.some(item => item.name === contact.name)
-    // )
-    //   return alert(`${contact.name} is already in contacts`);
-
     dispatch(logout());
-    // dispatch(logout(formData));
   };
 
   return (

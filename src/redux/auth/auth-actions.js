@@ -15,27 +15,3 @@ export const logoutError = createAction('auth/logoutError');
 export const fetchRequest = createAction('auth/fetchRequest');
 export const fetchSuccess = createAction('auth/fetchSuccess');
 export const fetchError = createAction('auth/fetchError');
-
-// export const fetchContactsRequest = createAction(
-//   'auth/fetchContactsRequest',
-// );
-// export const fetchContactsSuccess = createAction(
-//   'auth/fetchContactsSuccess',
-// );
-// export const fetchContactsError = createAction(
-//   'auth/fetchContactsError'
-// );
-
-// export const addContactRequest = createAction('auth/addContactRequest');
-// export const addContactSuccess = createAction('auth/addContactSuccess');
-// export const addContactError = createAction('auth/addContactError');
-
-// export const deleteContactRequest = createAction(
-//   'auth/deleteContactRequest',
-// );
-// export const deleteContactSuccess = createAction(
-//   'auth/deleteContactSuccess',
-// );
-// export const deleteContactError = createAction(
-//   'auth/deleteContactError'
-// );

@@ -13,8 +13,6 @@ const ContactList = () => {
 
   const dispatch = useDispatch();
 
-  // console.log('Render');
-
   useEffect(() => {
     dispatch(fetchItems());
   }, [dispatch]);

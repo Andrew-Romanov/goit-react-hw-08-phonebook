@@ -35,15 +35,6 @@ const AppBar = () => {
       ) : (
         <AuthNav />
       )}
-
-      {/* <NavLink
-        to="/contacs"
-        exact
-        className={styles.AppBar__Link}
-        activeClassName={styles.AppBar__Link_Active}
-      >
-        Contacts
-      </NavLink> */}
     </nav>
   );
 };
